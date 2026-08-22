@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="هتحقق جزء من حلمك معانا — انضم لروابط العمل والأرباح من هنا" />
+    <title>هتحقق جزء من حلمك معانا</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #101113;
+            --card: #18191c;
+            --ink: #F4EFE3;
+            --muted: #A69F8E;
+            --gold: #E3B84C;
+            --gold-soft: #F0CD7E;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--ink);
+            font-family: 'Almarai', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .wrap {
+            max-width: 460px;
+            margin: 0 auto;
+            min-height: 100dvh;
+            padding: 46px 22px 60px;
+            text-align: center;
+        }
+
+        /* =========================
+           الصورة الشخصية
+        ========================= */
+
+        .avatar {
+            width: 118px;
+            height: 118px;
+            border-radius: 50%;
+            margin: 0 auto 22px;
+            border: 2.5px solid rgba(244, 239, 227, .18);
+            overflow: hidden;
+            background: var(--card);
+
+            /* أنيميشن طلوع ونزول */
+            animation: floatingAvatar 4s ease-in-out infinite;
+
+            /* Glow خفيف */
+            box-shadow:
+                0 0 0 rgba(227, 184, 76, 0),
+                0 8px 30px rgba(0, 0, 0, .25);
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @keyframes floatingAvatar {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-9px);
+            }
+        }
+
+        /* =========================
+           العنوان
+        ========================= */
+
+        h1 {
+            font-weight: 800;
+            font-size: clamp(1.55rem, 5.2vw, 1.95rem);
+            line-height: 1.75;
+            color: var(--ink);
+
+            animation: fadeUp .8s ease both;
+        }
+
+        h1 .gold {
+            color: var(--gold-soft);
+        }
+
+        .intro {
+            margin-top: 18px;
+            font-size: 15.5px;
+            font-weight: 700;
+            line-height: 2;
+            color: var(--ink);
+
+            animation: fadeUp .8s ease .15s both;
+        }
+
+        .intro .arrow {
+            color: var(--gold);
+            font-weight: 800;
+        }
+
+        /* =========================
+           روابط الأزرار
+        ========================= */
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 26px;
+        }
+
+        .link {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 15px 18px;
+
+            border: 1px solid rgba(227, 184, 76, .35);
+            border-radius: 10px;
+
+            background: var(--card);
+            color: var(--ink);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15.5px;
+
+            /* مهم عشان الـGlow يكون ورا الزر */
+            z-index: 1;
+
+            transition:
+                transform .3s ease,
+                background .3s ease,
+                border-color .3s ease,
+                box-shadow .3s ease;
+
+            animation: fadeUp .8s ease .3s both;
+
+            /* الإضاءة الأساسية */
+            box-shadow:
+                0 0 12px rgba(227, 184, 76, .10),
+                0 4px 18px rgba(0, 0, 0, .20);
+        }
+
+        /* الهالة اللي ورا الزر */
+        .link::before {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            border-radius: inherit;
+
+            background: rgba(227, 184, 76, .18);
+
+            filter: blur(12px);
+            opacity: .35;
+
+            z-index: -1;
+
+            transition:
+                opacity .3s ease,
+                filter .3s ease;
+        }
+
+        .link:hover {
+            background: #1f2024;
+            border-color: rgba(227, 184, 76, .75);
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 0 18px rgba(227, 184, 76, .22),
+                0 7px 25px rgba(0, 0, 0, .30);
+        }
+
+        .link:hover::before {
+            opacity: .75;
+            filter: blur(16px);
+        }
+
+        .link:active {
+            transform: translateY(0) scale(.985);
+        }
+
+        .link svg {
+            width: 20px;
+            height: 20px;
+            color: var(--gold);
+            flex: none;
+
+            filter: drop-shadow(0 0 5px rgba(227, 184, 76, .35));
+
+            transition:
+                filter .3s ease,
+                transform .3s ease;
+        }
+
+        .link:hover svg {
+            filter: drop-shadow(0 0 9px rgba(227, 184, 76, .75));
+            transform: scale(1.08);
+        }
+
+        /* =========================
+           زر التليجرام
+        ========================= */
+
+        .tg-btn {
+            position: relative;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+
+            width: 100%;
+            max-width: 380px;
+
+            margin: 26px auto 0;
+            padding: 15px 24px;
+
+            border-radius: 999px;
+
+            background: #2AABEE;
+            color: #fff;
+
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+
+            border: none;
+
+            box-shadow:
+                0 6px 20px -6px rgba(42, 171, 238, .55),
+                0 0 18px rgba(42, 171, 238, .18);
+
+            transition:
+                transform .3s ease,
+                background .3s ease,
+                box-shadow .3s ease;
+
+            animation: fadeUp .8s ease .45s both;
+        }
+
+        .tg-btn::before {
+            content: "";
+            position: absolute;
+            inset: -4px;
+
+            border-radius: inherit;
+
+            background: rgba(42, 171, 238, .35);
+
+            filter: blur(14px);
+            opacity: .35;
+
+            z-index: -1;
+
+            transition: .3s ease;
+        }
+
+        .tg-btn:hover {
+            background: #2298D2;
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 25px -5px rgba(42, 171, 238, .7),
+                0 0 25px rgba(42, 171, 238, .3);
+        }
+
+        .tg-btn:hover::before {
+            opacity: .65;
+            filter: blur(17px);
+        }
+
+        .tg-btn:active {
+            transform: scale(.985);
+        }
+
+        .tg-btn .tg-circle {
+            width: 34px;
+            height: 34px;
+
+            border-radius: 50%;
+
+            background: #fff;
+
+            flex: none;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            box-shadow: 0 0 10px rgba(255, 255, 255, .25);
+        }
+
+        .tg-btn .tg-circle svg {
+            width: 19px;
+            height: 19px;
+            color: #2AABEE;
+        }
+
+        /* =========================
+           النص السفلي
+        ========================= */
+
+        .note {
+            margin-top: 22px;
+            font-size: 12.5px;
+            color: var(--muted);
+            line-height: 1.9;
+
+            animation: fadeUp .8s ease .6s both;
+        }
+
+        /* =========================
+           Animation دخول العناصر
+        ========================= */
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================
+           للموبايل والأجهزة اللي
+           بتفضل تقليل الحركة
+        ========================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .avatar,
+            h1,
+            .intro,
+            .link,
+            .tg-btn,
+            .note {
+                animation: none;
+            }
+
+            .link,
+            .tg-btn {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="wrap">
+
+        <!-- الصورة الشخصية -->
+        <div class="avatar">
+            <img src="maikhaled.jpg" alt="الصورة الشخصية" />
+        </div>
+
+        <h1>
+            هتحقق
+            <span class="gold">جزء من حلمك معانا</span>
+            والله فايتك كتير 👇👇
+        </h1>
+
+        <p class="intro">
+            <span class="arrow">👇👇</span>
+            لو بتدور علي شغل اونلاين خش من تحت هنا وإبداء حقق ارباح معانا
+            <span class="arrow">👇👇</span>
+        </p>
+
+        <div class="links">
+
+            <a class="link"
+                href="https://t.me/+W5AjPePv4BA4Yjg0"
+                target="_blank"
+                rel="noopener">
+
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M22 4.3L18.9 19c-.2 1-.9 1.2-1.8.8l-4.9-3.6-2.4 2.3c-.26.26-.48.48-.98.48l.35-4.9L18.4 6.9c.4-.35-.09-.55-.62-.2L6.7 13.1l-4.8-1.5c-1.04-.33-1.06-1.04.22-1.54L20.6 3.3c.87-.32 1.62.2 1.4 1z" />
+                </svg>
+
+                <span>ارباح على مدار اليوم من هنا!!!!!!</span>
+
+            </a>
+
+            <a class="link"
+                href="https://t.me/+W5AjPePv4BA4Yjg0"
+                target="_blank"
+                rel="noopener">
+
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M22 4.3L18.9 19c-.2 1-.9 1.2-1.8.8l-4.9-3.6-2.4 2.3c-.26.26-.48.48-.98.48l.35-4.9L18.4 6.9c.4-.35-.09-.55-.62-.2L6.7 13.1l-4.8-1.5c-1.04-.33-1.06-1.04.22-1.54L20.6 3.3c.87-.32 1.62.2 1.4 1z" />
+                </svg>
+
+                <span>اضغط هنا عشان تبداء شغل معانا</span>
+
+            </a>
+
+        </div>
+
+        <!-- زر التليجرام -->
+        <a class="tg-btn"
+            href="https://t.me/+W5AjPePv4BA4Yjg0"
+            target="_blank"
+            rel="noopener">
+
+            <span>اضغط هنا لنقلك للتليجرام</span>
+
+            <span class="tg-circle">
+
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M22 4.3L18.9 19c-.2 1-.9 1.2-1.8.8l-4.9-3.6-2.4 2.3c-.26.26-.48.48-.98.48l.35-4.9L18.4 6.9c.4-.35-.09-.55-.62-.2L6.7 13.1l-4.8-1.5c-1.04-.33-1.06-1.04.22-1.54L20.6 3.3c.87-.32 1.62.2 1.4 1z" />
+                </svg>
+
+            </span>
+
+        </a>
+
+        <p class="note">
+            انضمام فوري · بدون تسجيل · مجانًا
+        </p>
+
+    </main>
+
+</body>
+
+</html>
